@@ -1,10 +1,10 @@
-import {configureStore, combineReducers} from '@reduxjs/toolkit';
-import cartSlice from './cartSlice';
-
-const rootReducer = combineReducers({car: cartSlice});
+import {configureStore} from '@reduxjs/toolkit';
+import favoritesSlice from './favoritesSlice';
 
 const store = configureStore({
-    reducer: rootReducer
+    reducer: {
+        favorites: favoritesSlice,
+    }
 })
 
 export default store;

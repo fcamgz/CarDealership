@@ -7,13 +7,15 @@ import {
 } from "react-router-dom";
 import Homepage from './pages/Homepage';
 import Car from './pages/Car';
+import Favorites from './pages/Favourites';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route element={<Homepage/>} exatch path="/"/>
-        <Route element={<Car />} path="/:id"/>
+        <Route element={<Homepage/>} exacth path="/"/>
+        <Route element={<Favorites/>} exacth path="/favorites"/>
+        <Route element={<Car />} path="/car/:id"/>
       </Routes>
     </Router>
   );
