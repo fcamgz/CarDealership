@@ -8,12 +8,17 @@ const favoritesSlice = createSlice({
     },
     reducers: {
         addCarToFavorites: (state, action) => {
-            state.quantity += 1;
-            state.cars.push(action.payload);
+            if(state.cars.filter(car => car._id === action.payload._id).length > 0){
+                console.log('Car is already in favorites');
+            } else{
+                state.cars.push(action.payload);
+                state.quantity += 1;
+            }
         },
         removeCarFromFavorites: (state, action) => {
-            state.quantity -= 1;
-            state.cars.filter(car => car._id === action.payload._id);
+            if(state.quantity > 0)
+                state.quantity -= 1;
+            state.cars = state.cars.filter(car => car._id !== action.payload._id);
         },
     }
 })

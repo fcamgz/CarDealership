@@ -13,10 +13,11 @@ export default function Favorites() {
     
     useEffect(()=> {
         setCars(favoriteCars);
-    }, [cars]);
+    }, [favoriteCars]);
 
-    const handleRemoveFromCart = () => {
-        dispatch(removeCarFromFavorites(...cars, cars));
+    const handleRemoveFromCart = (car) => {
+        console.log(car);
+        dispatch(removeCarFromFavorites(car));
     }
 
     return (
@@ -35,7 +36,7 @@ export default function Favorites() {
                                 <h1>Year: {car.year}</h1>
                                 <h1>Color: {car.color}</h1>                        
                             <div style={{display: 'flex', justifyContent: 'center'}}>
-                                <button onClick={handleRemoveFromCart}>Remove car from favorites</button>
+                                <button onClick={() => handleRemoveFromCart(car)}>Remove car from favorites</button>
                             </div>
                         </div>
                         ))}
