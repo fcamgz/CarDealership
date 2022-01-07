@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const carRoute = require('./routes/car');
+const authRoute = require('./routes/auth');
 
 const app = express();
 
@@ -25,3 +26,4 @@ mongoose.connect(process.env.MONGO_URL)
 
 // using the routes
 app.use('/api/cars', carRoute);
+app.use('/api/auth', authRoute);
