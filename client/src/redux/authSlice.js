@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"; 
+import axios from 'axios';
 
 const authSlice = createSlice({
     name: 'auth',
@@ -8,9 +9,11 @@ const authSlice = createSlice({
     },
     reducers: {
         login: (state, action) => {
-            state.user = action.payload;
-            state.loggedIn = true;
-        }
+            axios.post('http://localhost:5000/api/auth/login', {username: action.payload.username, password: action.payload.password})
+            .then(res => res.data)
+            .then(res => res.username ? (state.loggedIn = true) (state.user = res) : (state.loggedIn = false))
+            .catch(err => console.log(err));
+        },
     }
 });
 
