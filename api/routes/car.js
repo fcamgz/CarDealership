@@ -1,9 +1,12 @@
 const router = require('express').Router();
 const Car = require('../models/Car');
+const ExpressRedisCache = require('express-redis-cache');
+
+const cache = ExpressRedisCache({})
 
 // get all cars
 // or get all cars by filter
-router.get('/', async (req, res) => {
+router.get('/', cache.route(), async (req, res) => {
     const year = req.query.year;
     const gteOrlte = req.query.yearType;
     try{
